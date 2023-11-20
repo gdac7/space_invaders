@@ -1,4 +1,3 @@
-
 from PPlay.sprite import Sprite
 
 
@@ -8,7 +7,6 @@ class Ship(Sprite):
         self.set_position(screen.width/2 - self.width, screen.height - 2 * self.height)
         self.speed = 150
         self.shot_speed = 500
-        self.can_shoot = True
         self.shot_particles = []
 
     def move(self, keyboard, screen):
@@ -18,11 +16,10 @@ class Ship(Sprite):
             self.x += self.speed * screen.delta_time()
 
     def shoot(self):
-        if self.can_shoot:
-            shot_particle = Sprite("imgs/shot.png")
-            shot_particle.set_position(self.x + self.width/2, self.y)
-            self.shot_particles.append(shot_particle)
-            self.can_shoot = False
+        shot_particle = Sprite("imgs/shot.png")
+        shot_particle.set_position(self.x + self.width/2, self.y)
+        self.shot_particles.append(shot_particle)
+       
 
     def check_shot_particles(self, screen):
         for sp in self.shot_particles:
@@ -31,6 +28,8 @@ class Ship(Sprite):
                 sp.y -= self.shot_speed * screen.delta_time()
             else:
                 del self.shot_particles[self.shot_particles.index(sp)]
+   
+
 
 
 

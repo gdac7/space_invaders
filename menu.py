@@ -94,5 +94,5 @@ class Menu:
                     btn_clicked = BACK
             self.screen.update()
 
-        return btn_clicked
+        return btn_clicked  
 
